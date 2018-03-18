@@ -1,8 +1,9 @@
-# henri_potier_flutter
+# Henri Potier with Flutter
 
-Henri Potier with Flutter
+POC of coding Henri Potier exercise with Flutter Beta.
 
-## Getting Started
+## Demo
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+<img src="https://i.imgur.com/ABkJ8fx.png" width="300" />
+<img src="https://i.imgur.com/LUeHIuP.png" width="300" />
+<img src="https://i.imgur.com/cLGDMAG.png" width="300" />
