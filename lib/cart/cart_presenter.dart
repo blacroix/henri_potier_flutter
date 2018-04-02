@@ -14,8 +14,6 @@ class CartPresenter {
     return price;
   }
 
-  String getBestOffer(List<Book> books) => '50%';
-
   Future<List<Offer>> fetchOffers(books) async {
     final isbns = books.map((Book b) => b.isbn).join(',');
     final response =
@@ -31,6 +29,10 @@ class CartPresenter {
   Future<Offer> fetchBestOffer(books) async {
     final List<Offer> offers = await fetchOffers(books);
     final price = calculateTotalPrice(books);
+    return getBestOffer(offers, price);
+  }
+
+  Offer getBestOffer(List<Offer> offers, int price) {
     double maxRebate = -1.0;
     Offer bestOffer;
     for (final offer in offers) {
@@ -50,9 +52,9 @@ class CartPresenter {
       case OfferType.percentage:
         return price * offer.value / 100;
       case OfferType.slice:
-        var slice = price / offer.sliceValue;
+        var slice = price ~/ offer.sliceValue;
         if (slice > 0) {
-          return slice * offer.value;
+          return (slice * offer.value).toDouble();
         }
         return 0.0;
     }
