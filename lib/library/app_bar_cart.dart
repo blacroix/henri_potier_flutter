@@ -12,6 +12,9 @@ class AppBarCart extends StatefulWidget {
   void add() => state.add();
 
   void onPressed() => _onCartClick();
+
+  @override
+  Key get key => Key('app-bar-cart');
 }
 
 class _AppBarCartState extends State<AppBarCart> {
@@ -29,24 +32,26 @@ class _AppBarCartState extends State<AppBarCart> {
   Widget build(BuildContext context) {
     if (count > 0) {
       return IconButton(
-          icon: Container(
-              child: Stack(alignment: AlignmentDirectional.topEnd, children: [
-            Icon(Icons.shopping_cart),
-            Container(
-              alignment: AlignmentDirectional.center,
-              height: 12.0,
-              width: 12.0,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                shape: BoxShape.circle,
-              ),
-              child: Text(
-                count.toString(),
-                style: TextStyle(fontSize: 10.0),
-              ),
-            )
-          ])),
-          onPressed: widget.onPressed);
+        icon: Container(
+            child: Stack(alignment: AlignmentDirectional.topEnd, children: [
+          Icon(Icons.shopping_cart),
+          Container(
+            alignment: AlignmentDirectional.center,
+            height: 12.0,
+            width: 12.0,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+            ),
+            child: Text(
+              count.toString(),
+              style: TextStyle(fontSize: 10.0),
+            ),
+          )
+        ])),
+        onPressed: widget.onPressed,
+        key: Key('app-bar-cart-icon'),
+      );
     } else {
       return Container();
     }
